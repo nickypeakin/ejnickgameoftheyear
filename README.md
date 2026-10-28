@@ -9,6 +9,10 @@ Built with plain JavaScript modules and [three.js](https://threejs.org) (r160, l
 from a CDN). No build step, no assets: every model, texture, icon and sound is
 generated in code.
 
+> This repo also has **[Blockcraft](minecraft/README.md)**, a Minecraft-style voxel
+> sandbox with the Wilderness Bound update. Run `npm start` and open
+> `http://localhost:8080/minecraft/`.
+
 ## Running it
 
 ES modules must be served over HTTP, so opening `index.html` from disk will not work.
