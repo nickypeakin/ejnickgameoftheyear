@@ -275,11 +275,20 @@ export class UI {
       const del = el('button', 'mc-btn small', li);
       del.type = 'button';
       del.textContent = 'Delete';
+      // Two clicks to delete: the first arms the button, the second deletes.
       del.addEventListener('click', () => {
-        if (confirm(`Delete "${w.name}"? This cannot be undone.`)) {
+        if (del.dataset.armed) {
           this.game.saves.remove(w.id);
           this.renderWorlds();
+          return;
         }
+        del.dataset.armed = '1';
+        del.textContent = 'Click again to delete';
+        setTimeout(() => {
+          if (!del.isConnected) return;
+          delete del.dataset.armed;
+          del.textContent = 'Delete';
+        }, 3000);
       });
     }
   }
